@@ -8,7 +8,8 @@
     <main id="main" v-if="store.imgLoadStatus">
       <div class="container" v-show="!store.backgroundShow">
         <section class="all" v-show="!store.setOpenState">
-          <MainLeft />
+          <MainLeft v-show="!store.leftBoxOpenState" />
+          <leftBox v-show="store.leftBoxOpenState" />
           <MainRight v-show="!store.boxOpenState" />
           <Box v-show="store.boxOpenState" />
         </section>
@@ -47,6 +48,7 @@ import Box from "@/views/Box/index.vue";
 import MoreSet from "@/views/MoreSet/index.vue";
 import cursorInit from "@/utils/cursor.js";
 import config from "@/../package.json";
+import leftBox from "@/views/Box/leftBox.vue";
 
 const store = mainStore();
 

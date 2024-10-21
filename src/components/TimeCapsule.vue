@@ -34,14 +34,14 @@ const store = mainStore();
 
 // 进度条数据
 const timeData = ref(getTimeCapsule());
-const startDate = ref(import.meta.env.VITE_SITE_START);
+const startDate = "2024-09-30";
 const startDateText = ref(null);
 const timeInterval = ref(null);
 
 onMounted(() => {
   timeInterval.value = setInterval(() => {
     timeData.value = getTimeCapsule();
-    if (startDate.value) startDateText.value = siteDateStatistics(new Date(startDate.value));
+    if (startDate) startDateText.value = siteDateStatistics(new Date(startDate));
   }, 1000);
 });
 

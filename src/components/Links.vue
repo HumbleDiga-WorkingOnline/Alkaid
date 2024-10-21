@@ -25,7 +25,7 @@
             <div
               class="item cards"
               :style="index < 3 ? 'margin-bottom: 20px' : null"
-              @click="jumpLink(item)"
+              @click="changeBox(item.name)"
             >
               <Icon size="26">
                 <component :is="siteIcon[item.icon]" />
@@ -73,11 +73,34 @@ const siteIcon = {
 };
 
 // 链接跳转
-const jumpLink = (data) => {
-  if (data.name === "音乐" && store.musicClick) {
-    if (typeof $openList === "function") $openList();
+// const jumpLink = (data) => {
+//   if (data.name === "音乐" && store.musicClick) {
+//     if (typeof $openList === "function") $openList();
+//   } else {
+//     window.open(data.link, "_blank");
+//   }
+// };
+
+// 切换左侧功能区
+const changeBox = (name) => {
+  if (store.getInnerWidth >= 721) {
+    if (store.leftBoxMsg === name){
+      store.leftBoxOpenState = false;
+      store.leftBoxMsg = "";
+      return
+    }else {
+      store.leftBoxOpenState = !store.leftBoxOpenState;
+    }
+    store.leftBoxMsg = name;
   } else {
-    window.open(data.link, "_blank");
+    ElMessage({
+      message: "当前页面宽度不足以开启盒子",
+      grouping: true,
+      icon: h(Error, {
+        theme: "filled",
+        fill: "#efefef",
+      }),
+    });
   }
 };
 

@@ -3,36 +3,42 @@
     "name": "Github",
     "icon": "/images/icon/github.png",
     "tip": "去 Github 看看",
-    "url": "https://github.com/"
+    "#url": "https://github.com/",
+    "wantToGo": "false"
   },
   {
     "name": "BiliBili",
     "icon": "/images/icon/bilibili.png",
     "tip": "(゜-゜)つロ 干杯 ~",
-    "url": "https://www.bilibili.com/"
+    "url": "https://www.bilibili.com/",
+    "wantToGo": "true"
   },
   {
     "name": "QQ",
     "icon": "/images/icon/qq.png",
     "tip": "有什么事吗",
-    "url": "https://res.abeim.cn/api-qq.chat?qq=1070731324"
+    "url": "https://res.abeim.cn/api-qq.chat?qq=1070731324",
+    "wantToGo": "true"
   },
   {
     "name": "Email",
     "icon": "/images/icon/email.png",
     "tip": "来封 Email ~",
-    "url": "mailto:one@imsyy.top"
+    "#url": "mailto:one@imsyy.top",
+    "wantToGo": "false"
   },
   {
     "name": "Twitter",
     "icon": "/images/icon/twitter.png",
     "tip": "你懂的 ~",
-    "url": "https://twitter.com/"
+    "#url": "https://twitter.com/",
+    "wantToGo": "false"
   },
   {
     "name": "Telegram",
     "icon": "/images/icon/telegram.png",
     "tip": "你懂的 ~",
-    "url": "https://t.me/bottom_user"
+    "#url": "https://t.me/bottom_user",
+    "wantToGo": "false"
   }
 ]

@@ -1,42 +1,87 @@
 <template>
   <div class="box cards" @mouseenter="closeShow = true" @mouseleave="closeShow = false">
-<!--    <transition name="el-fade-in-linear">-->
-<!--      <close-one-->
-<!--        class="close"-->
-<!--        theme="filled"-->
-<!--        size="28"-->
-<!--        fill="#ffffff60"-->
-<!--        v-show="closeShow"-->
-<!--        @click="store.boxOpenState = false"-->
-<!--      />-->
-<!--    </transition>-->
-<!--    <transition name="el-fade-in-linear">-->
-<!--      <setting-two-->
-<!--        class="setting"-->
-<!--        theme="filled"-->
-<!--        size="28"-->
-<!--        fill="#ffffff60"-->
-<!--        v-show="closeShow"-->
-<!--        @click="store.setOpenState = true"-->
-<!--      />-->
-<!--    </transition>-->
-    <div class="content">
-      <!-- 可在此处自定义任意内容 -->
+    <transition name="el-fade-in-linear">
+      <close-one
+        class="close"
+        theme="filled"
+        size="28"
+        fill="#ffffff60"
+        v-show="closeShow"
+        @click=" function(){store.leftBoxOpenState = false ,store.leftBoxMsg = ''} "
+      />
+    </transition>
+
+    <div class="content" style="background-color: #409EFF">
+
+        <el-collapse v-model="activeNames" @change="handleChange"  v-for="(item, index) in userData" :key="item"  style="background-color: #409EFF">
+<!--          <div v-for="(item, index) in userData" :key="item">-->
+
+              <el-collapse-item :title="item.user" :name="index"  class="item cards"  >
+                <div class="item cards">
+                  {{item.msg}}
+                </div>
+              </el-collapse-item>
+        </el-collapse>
+
     </div>
   </div>
 </template>
 
 <script setup>
 import { CloseOne, SettingTwo } from "@icon-park/vue-next";
-import { mainStore } from "@/store";
-import TimeCapsule from "@/components/TimeCapsule.vue";
-import MoreContent from "@/components/MoreContent.vue";
+import siteLinks from "@/assets/siteLinks.json";
+import { ref } from 'vue'
 
-const store = mainStore();
-const closeShow = ref(false);
+
+const activeNames = ref(['1'])
+const handleChange = () => {
+  // console.log(val)
+}
+const userData = [{
+      "user":"测试用户",
+      "msg":"留1111111111111111言",
+      "time":"时间"
+    },{
+      "user":"测试用户2",
+      "msg":"留言",
+      "time":"时间"
+    },{
+      "user":"测试用户3",
+      "msg":"留言",
+      "time":"时间"
+    }];
 </script>
 
 <style lang="scss" scoped>
+
+
+.mh{
+  background-color: #00000040;
+  backdrop-filter: blur(10px);
+}
+//.item {
+//   height: 100px;
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: row;
+//   justify-content: center;
+//   padding: 0 10px;
+//   animation: fade 0.5s;
+//
+//  .cards {
+//    border-radius: 6px;
+//    background-color: #00000040;
+//    backdrop-filter: blur(10px);
+//    transform: scale(1);
+//    transition:
+//        backdrop-filter 0.3s,
+//        transform 0.3s;
+//  }
+//
+//}
+
+
 .box {
   flex: 1 0 0%;
   margin-left: 0.75rem;

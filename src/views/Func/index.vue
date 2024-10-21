@@ -42,7 +42,7 @@ const currentTime = ref({});
 const timeInterval = ref(null);
 
 // 播放器 id
-const playerHasId = import.meta.env.VITE_SONG_ID;
+const playerHasId = 8468735070;
 
 // 更新时间
 const updateTimeData = () => {

@@ -8,7 +8,7 @@ import fetchJsonp from "fetch-jsonp";
 // 获取音乐播放列表
 export const getPlayerList = async (server, type, id) => {
   const res = await fetch(
-    `${import.meta.env.VITE_SONG_API}?server=${server}&type=${type}&id=${id}`,
+    `https://music.163.com/outchain/player?type=0&id=8468735070`,
   );
   const data = await res.json();
 

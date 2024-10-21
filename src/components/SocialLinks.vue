@@ -9,6 +9,7 @@
         target="_blank"
         @mouseenter="socialTip = item.tip"
         @mouseleave="socialTip = '通过这里联系我吧'"
+        @click ="otherClick(item)"
       >
         <img class="icon" :src="item.icon" height="24" />
       </a>
@@ -22,6 +23,18 @@ import socialLinks from "@/assets/socialLinks.json";
 
 // 社交链接提示
 const socialTip = ref("通过这里联系我吧");
+
+function otherClick(obj){
+  console.log(obj)
+  if (obj.wantToGo == 'false'){
+      ElMessage({
+        message: "别点了，不想去",
+        grouping: true,
+        duration: 2000,
+      });
+      return false;
+  }
+}
 </script>
 
 <style lang="scss" scoped>

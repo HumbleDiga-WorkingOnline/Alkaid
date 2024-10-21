@@ -31,7 +31,7 @@ export const getTimeCapsule = () => {
     day: "今日",
     week: "本周",
     month: "本月",
-    year: "本年",
+    year: "今年",
   };
   /**
    * 计算时间差的函数
@@ -46,11 +46,28 @@ export const getTimeCapsule = () => {
     const total = end.diff(start, unit === "day" ? "hour" : "day") + 1;
     // 计算已经过去的天数或小时数
     let passed = now.diff(start, unit === "day" ? "hour" : "day");
+    //剩余
+    let remaining = 0;
+    //百分比
+    let percentage = 0;
+
     if (unit === "week") {
       passed = (passed + 6) % 7;
     }
-    const remaining = total - passed;
-    const percentage = (passed / total) * 100;
+    remaining = total - passed;
+    percentage = (passed / total) * 100;
+    if (unit === "day") {
+      //今天剩余小时
+      remaining = total - passed-1;
+
+      var getTime = new Date().getTime(); //获取到当前时间戳
+      var time = new Date(getTime); //创建一个日期对象
+      var hour = time.getHours().toString().padStart(2, '0'); // 时
+      var minute = time.getMinutes().toString().padStart(2, '0'); // 分
+      var second = time.getSeconds().toString().padStart(2, '0'); // 秒
+      let dayPassed  = parseInt(hour *60*60) + parseInt(minute *60) +parseInt(second);
+      percentage = dayPassed / 86400 *100;
+    }
     // 返回数据
     return {
       name: dayText[unit],
